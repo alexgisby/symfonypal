@@ -8,24 +8,28 @@
 {% block title %}Symfony - Welcome{% endblock %}
 {% block content %}
     <h1 class="jumbo">Welcome BBC Peeps!</h1>
-
-    <h1>Schedules for TV services</h1>
-    <img src="http://www.bubblews.com/assets/images/news/1631598340_1376996881.jpg" width="400px"/>
-    <ul class="services">
-      {% for service in tv_services %}
-        <a href="{{ url('_schedule', {'service':service.id})}}">
-            <li> {{ service.name }} </li>
-        </a>
-      {% endfor %}
-    </ul>
-
-    <h1>Schedules for Radio services</h1>
-    <img src="http://www.studentradioalumni.com/wp-content/uploads/2011/05/pure-digital-radio.jpg" width="400px"/>
-    <ul class="services">
-      {% for service in radio_services %}
-        <a href="{{ url('_schedule', {'service':service.id})}}">
-            <li> {{ service.name }} </li>
-        </a>
-      {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="span6">
+            <h1>Schedules for TV services</h1>
+            <figure><img src="http://www.bubblews.com/assets/images/news/1631598340_1376996881.jpg" width="400px"/></figure>
+            <ul class="services">
+              {% for service in tv_services %}
+                <a href="{{ url('_schedule', {'service':service.id})}}">
+                    <li> {{ service.name }} </li>
+                </a>
+              {% endfor %}
+            </ul>
+        </div>
+        <div class="span6">
+            <h1>Schedules for Radio services</h1>
+            <figure><img src="http://www.studentradioalumni.com/wp-content/uploads/2011/05/pure-digital-radio.jpg" width="400px"/></figure>
+            <ul class="services">
+              {% for service in radio_services %}
+                <a href="{{ url('_schedule', {'service':service.id})}}">
+                    <li> {{ service.name }} </li>
+                </a>
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
