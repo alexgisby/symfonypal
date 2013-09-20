@@ -7,6 +7,7 @@
 
 {% block title %}EPISODE{% endblock %}
 {% block content %}
+<div class="episode">
     <h1 class="title">EPISODE PAGE</h1>
     <h2>{{episode.title}}</h2>
     <img src="{{episode.imageHref}}" />
@@ -15,4 +16,9 @@
         <h3>Synopsis:</h3>
         {{episode.longSynopsis}}
     </div>
+</div>
+
+<div class="back">
+    <a href="{{ url('_welcome')}}">Go back</a>
+</div>
 {% endblock %}

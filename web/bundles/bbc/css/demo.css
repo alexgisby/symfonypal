@@ -114,3 +114,26 @@ select {
 .schedule img {
     width: 150px;
 }
+
+.episode {
+    text-align: center;
+}
+
+.back {
+    background: #ccc;
+    width: 100px;
+    border: 1px solid #888;
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0px 2px 9px rgba(0,0,0,0.5);
+}
+
+.back a::before {
+    content: '←';
+}
+.back a {
+    font-size: 18px;
+    color: #333;
+}
+
