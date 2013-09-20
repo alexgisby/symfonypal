@@ -4,7 +4,7 @@ namespace BBC\BBCBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class WelcomeController extends BaseController
+class WelcomeController extends Controller
 {
     public function indexAction()
     {
