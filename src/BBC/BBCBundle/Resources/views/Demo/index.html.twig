@@ -21,7 +21,7 @@
             <figure><img src="http://www.bubblews.com/assets/images/news/1631598340_1376996881.jpg" width="400px"/></figure>
             <ul class="services">
               {% for service in tv_services %}
-                <a href="{{ url('_schedule', {'service':service.id})}}">
+                <a href="{{ url('_schedule', {'service_id':service.id})}}">
                     <li> <h3>{{ service.name }} </h3>
                     <div class="description">{{ service.description }}</div>
                     </li>
@@ -34,7 +34,7 @@
             <figure><img src="http://www.studentradioalumni.com/wp-content/uploads/2011/05/pure-digital-radio.jpg" width="400px"/></figure>
             <ul class="services">
               {% for service in radio_services %}
-                <a href="{{ url('_schedule', {'service':service.id})}}">
+                <a href="{{ url('_schedule', {'service_id':service.id})}}">
                     <li> <h3>{{ service.name }} </h3>
                     <div class="description">{{ service.description }}</div>
                     </li>
