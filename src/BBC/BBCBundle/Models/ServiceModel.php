@@ -11,7 +11,6 @@ class ServiceModel extends BaseModel
 {
     public static function fetchServices()
     {
-        $url = 'http://d.bbc.co.uk/nitro/api/services/?api_key=qsyftbsdnprjqw9sxy4fvz2e';
         $client = new NitroClient();
 
         $resultset = $client->fetchServices(
