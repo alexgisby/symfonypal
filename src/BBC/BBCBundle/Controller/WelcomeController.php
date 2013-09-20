@@ -4,7 +4,7 @@ namespace BBC\BBCBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class WelcomeController extends Controller
+class WelcomeController extends BaseController
 {
     public function indexAction()
     {
@@ -13,6 +13,13 @@ class WelcomeController extends Controller
          * or @Template annotation as demonstrated in DemoController.
          *
          */
-        return $this->render('BBCBundle:Welcome:index.html.twig');
+
+        $url = 'http://www.test.bbc.co.uk/frameworks/barlesque/orb/webservice.json';
+        $data = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);
+        $orb = json_decode($data);
+
+        return $this->render('BBCBundle:Welcome:index.html.twig',
+            (array) $orb->barlesque
+        );
     }
 }
