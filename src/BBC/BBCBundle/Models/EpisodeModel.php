@@ -15,12 +15,6 @@ class EpisodeModel extends BaseModel
 
         $episode = $client->fetchEpisode($pid)->getEpisode();
 
-        //http://d.bbc.co.uk/nitro/api/programmes?entity_type=episode&pid=wcrhl7thx1w&api_key=qsyftbsdnprjqw9sxy4fvz2e
-
-        var_dump(array_keys((array)$episode));
-        var_dump($episode->episode_of);
-//        die();
-
         return array(
             'pid' => $episode->pid,
             'title' => $episode->presentation_title,
