@@ -69,6 +69,7 @@ class DemoController extends BaseController
     public function scheduleAction($service_id)
     {
         $broadcasts = BroadcastModel::fetchServiceSchedule($service_id, strtotime('2013-09-20 00:00:00'), strtotime('2013-09-20 23:59:59'));
+        $service = ServiceModel::fetchServiceBySid($service_id);
 
         foreach($broadcasts as $cast) {
             $times = $cast->published_time->attributes();
@@ -80,7 +81,7 @@ class DemoController extends BaseController
         }
 
         return $this->render('BBCBundle:Demo:schedule.html.twig',
-            $this->getBarlesque() + array('broadcasts' => $broadcasts)
+            $this->getBarlesque() + array('broadcasts' => $broadcasts, 'service' => $service)
         );
     }
 

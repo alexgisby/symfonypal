@@ -22,4 +22,11 @@ class ServiceModel extends BaseModel
 
         return $resultset;
     }
+
+    public static function fetchServiceBySid($sid)
+    {
+        $client = new NitroClient();
+        $result = $client->fetchServiceBySid($sid);
+        return $result;
+    }
 }

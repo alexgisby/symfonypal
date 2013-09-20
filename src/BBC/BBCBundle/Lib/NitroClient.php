@@ -30,6 +30,20 @@ class NitroClient
         return new NitroResponse($doc);
     }
 
+    public function fetchServiceBySid($sid)
+    {
+        $query = array(
+            'sid' => urlencode($sid),
+            'api_key' => self::API_KEY
+        );
+
+        $url = self::BASE_URL . '/services?' . http_build_query($query);
+        $response = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);
+        $doc = simplexml_load_string($response);
+
+        return $doc->results->service;
+    }
+
     public function fetchServiceBroadcasts($sid, $from, $to, $limit)
     {
         $query = array(
