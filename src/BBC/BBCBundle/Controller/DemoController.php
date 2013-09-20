@@ -8,21 +8,53 @@ use BBC\BBCBundle\Models\BroadcastModel;
 
 class DemoController extends BaseController
 {
+    /**
+     * indexAction 
+     * 
+     * @access public
+     * @return void
+     */
     public function indexAction()
     {
-        return $this->render('BBCBundle:Demo:index.html.twig',
-            $this->getBarlesque()
-        );
+        $rawservices = ServiceModel::fetchServices();
+        $tv_services = $radio_services = array();
+        foreach ($rawservices as $s) {
+            $obj = array(
+                'id'=>(string)$s->sid,
+                'type'=>(string)$s->type,
+                'name'=>(string)$s->name,
+            );
+            if ($obj['type'] === 'TV') {
+                $tv_services[] = $obj;
+            } else {
+                $radio_services[] = $obj;
+            }
+        }
+        $viewData = $this->getBarlesque();
+        $viewData['radio_services'] = $radio_services;
+        $viewData['tv_services'] = $tv_services;
+        return $this->render('BBCBundle:Demo:index.html.twig', $viewData);
     }
 
+    /**
+     * servicesAction 
+     * 
+     * @access public
+     * @return void
+     */
     public function servicesAction()
     {
-        $services = ServiceModel::fetchServices();
         return $this->render('BBCBundle:Demo:index.html.twig',
             $this->getBarlesque()
         );
     }
 
+    /**
+     * scheduleAction 
+     * 
+     * @access public
+     * @return void
+     */
     public function scheduleAction($service_id)
     {
         $broadcasts = BroadcastModel::fetchServiceSchedule($service_id, strtotime('2013-09-20 00:00:00'), strtotime('2013-09-20 23:59:59'));
@@ -32,6 +64,12 @@ class DemoController extends BaseController
         );
     }
 
+    /**
+     * episodeAction 
+     * 
+     * @access public
+     * @return void
+     */
     public function episodeAction()
     {
         return $this->render('BBCBundle:Demo:episode.html.twig',
