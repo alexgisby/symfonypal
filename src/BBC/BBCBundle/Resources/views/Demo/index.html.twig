@@ -8,4 +8,14 @@
 {% block title %}Symfony - Welcome{% endblock %}
 {% block content %}
     <h1 class="title">Welcome BBC Peeps!</h1>
+
+    <ul class="pages">
+        <li>
+            <a href="{{ url('_services')}}">BBC and radio services</a>
+        </li>
+        <li>
+            <a href="{{ url('_schedule')}}">Schedule</a>
+        </li>
+    </ul>
+
 {% endblock %}

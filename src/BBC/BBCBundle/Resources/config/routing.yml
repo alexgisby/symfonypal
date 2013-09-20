@@ -1,3 +1,15 @@
 _welcome:
     pattern:  /
     defaults: { _controller: BBCBundle:Demo:index }
+
+_services:
+    pattern:  /services
+    defaults: { _controller: BBCBundle:Demo:services }
+
+_schedule:
+    pattern:  /schedule
+    defaults: { _controller: BBCBundle:Demo:schedule }
+
+_episode:
+    pattern:  /episode/{pid}
+    defaults: { _controller: BBCBundle:Demo:episode }
