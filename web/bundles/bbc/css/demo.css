@@ -27,6 +27,21 @@ h1 {
     margin:10px 20px;
 }
 
+.services li .description {
+    display: none;
+    position: absolute;
+}
+
+.services li:hover .description {
+    display: block;
+    width: 150px;
+    font-size: 14px;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.3);
+    padding: 5px;
+}
+}
+
 .row {
     display: block;
 }
@@ -35,6 +50,21 @@ h1 {
     content: '';
     clear: both;
     display: block;
+}
+
+.span1 {
+    width: 8.3%;
+    float: left;
+}
+
+.span2 {
+    width: 16.6%;
+    float: left;
+}
+
+.span3 {
+    width: 25%;
+    float: left;
 }
 
 .span6 {
@@ -50,4 +80,21 @@ figure {
 figure img {
     position: absolute;
     bottom: 0px;
+}
+
+select {
+    font-size: 16px;
+}
+
+#wrapper {
+    font-size: 16px;
+}
+
+/* Schedule */
+.schedule {
+
+}
+
+.schedule img {
+    width: 300px;
 }

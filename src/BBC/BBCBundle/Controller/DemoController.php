@@ -19,21 +19,31 @@ class DemoController extends BaseController
     {
         $rawservices = ServiceModel::fetchServices();
         $tv_services = $radio_services = array();
+        $regions = array();
         foreach ($rawservices as $s) {
             $obj = array(
                 'id'=>(string)$s->sid,
                 'type'=>(string)$s->type,
                 'name'=>(string)$s->name,
             );
+            $obj['description'] = (isset($s->description))?(string)$s->description:'No description';
+
             if ($obj['type'] === 'TV') {
                 $tv_services[] = $obj;
             } else {
                 $radio_services[] = $obj;
             }
+            if (isset($s->region)) {
+                $regions[ucfirst((string)$s->region)] = true;
+            }
         }
+        $regions = array_keys($regions);
+        sort($regions);
+
         $viewData = $this->getBarlesque();
         $viewData['radio_services'] = $radio_services;
         $viewData['tv_services'] = $tv_services;
+        $viewData['regions'] = $regions;
         return $this->render('BBCBundle:Demo:index.html.twig', $viewData);
     }
 
@@ -59,6 +69,15 @@ class DemoController extends BaseController
     public function scheduleAction($service_id)
     {
         $broadcasts = BroadcastModel::fetchServiceSchedule($service_id, strtotime('2013-09-20 00:00:00'), strtotime('2013-09-20 23:59:59'));
+
+        foreach($broadcasts as $cast) {
+            $times = $cast->published_time->attributes();
+            $image = $cast->image->attributes();
+
+            $cast->start_time = strtotime($times['start']);
+            $cast->end_time = strtotime($times['end']);
+            $cast->image_href = str_replace('$recipe', '512x512', $image['template_url']);
+        }
 
         return $this->render('BBCBundle:Demo:schedule.html.twig',
             $this->getBarlesque() + array('broadcasts' => $broadcasts)
