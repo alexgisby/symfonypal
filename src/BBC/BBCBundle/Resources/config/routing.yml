@@ -7,7 +7,7 @@ _services:
     defaults: { _controller: BBCBundle:Demo:services }
 
 _schedule:
-    pattern:  /schedule
+    pattern:  /schedule/{service_id}
     defaults: { _controller: BBCBundle:Demo:schedule }
 
 _episode:

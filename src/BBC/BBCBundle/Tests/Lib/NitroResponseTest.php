@@ -6,7 +6,7 @@ use BBC\BBCBundle\Lib\NitroClient;
 
 class NitroResponseTest extends TestCase
 {
-    public function testIterator()
+    public function testIteratorAndCount()
     {
         $client = new NitroClient();
         $response = $client->fetchServices(
