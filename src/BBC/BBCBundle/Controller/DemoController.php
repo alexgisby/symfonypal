@@ -3,6 +3,7 @@
 namespace BBC\BBCBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use BBC\BBCBundle\Models\ServiceModel;
 
 class DemoController extends BaseController
 {
@@ -15,6 +16,7 @@ class DemoController extends BaseController
 
     public function servicesAction()
     {
+        $services = ServiceModel::fetchServices();
         return $this->render('BBCBundle:Demo:index.html.twig',
             $this->getBarlesque()
         );
