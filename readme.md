@@ -32,10 +32,10 @@ What we hated about Symfony2
 - No integrated KV caching
 - Documentation is often verbose and unclear.
 - Scattered config files
+- Pretty heavy. We needed to increase the RAM limit to 128MB to get the meaningful debugging info
 
 What we couldn't do
 -----
 - Have "preDispatch" method in a BaseController
-- Pretty heavy. We needed to increase the RAM limit to 128MB to get the meaningful debugging info
 
 
