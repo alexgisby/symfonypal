@@ -8,6 +8,13 @@
 {% block title %}Symfony - Welcome{% endblock %}
 {% block content %}
     <h1 class="jumbo">Welcome BBC Peeps!</h1>
+    <h2>Filter</h2>
+    <select name="region">
+    {% for region in regions %}
+    <option value="{{ region }}">{{region}}</option>
+    {% endfor %}
+    </select>
+
     <div class="row">
         <div class="span6">
             <h1>Schedules for TV services</h1>
@@ -15,7 +22,9 @@
             <ul class="services">
               {% for service in tv_services %}
                 <a href="{{ url('_schedule', {'service':service.id})}}">
-                    <li> {{ service.name }} </li>
+                    <li> <h3>{{ service.name }} </h3>
+                    <div class="description">{{ service.description }}</div>
+                    </li>
                 </a>
               {% endfor %}
             </ul>
@@ -26,7 +35,9 @@
             <ul class="services">
               {% for service in radio_services %}
                 <a href="{{ url('_schedule', {'service':service.id})}}">
-                    <li> {{ service.name }} </li>
+                    <li> <h3>{{ service.name }} </h3>
+                    <div class="description">{{ service.description }}</div>
+                    </li>
                 </a>
               {% endfor %}
             </ul>
