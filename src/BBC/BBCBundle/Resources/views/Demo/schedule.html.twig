@@ -17,7 +17,12 @@
             </div>
             <div class="title span6">
                 <a href="/episode/{{ broadcast.ancestors_titles.episode.pid }}">
-                    <span class="brand-title">{{ broadcast.ancestors_titles.brand.title }}</span>
+                    {% if broadcast.ancestors_titles.brand.title is defined %}
+                        <span class="brand-title">{{ broadcast.ancestors_titles.brand.title }}</span>
+                    {% elseif broadcast.ancestors_titles.series.title is defined %}
+                        <span class="brand-title">{{ broadcast.ancestors_titles.series.title }}</span>
+                    {% endif %}
+
                     {% if broadcast.ancestors_titles.episode.title is defined %}
                         :: <span class="episode-title">{{ broadcast.ancestors_titles.episode.title }}</span>
                     {% endif %}
