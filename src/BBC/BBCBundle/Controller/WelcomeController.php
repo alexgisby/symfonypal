@@ -13,6 +13,9 @@ class WelcomeController extends Controller
          * or @Template annotation as demonstrated in DemoController.
          *
          */
+
+        $client = new \BBC\BBCBundle\Lib\NitroClient();
+
         return $this->render('BBCBundle:Welcome:index.html.twig');
     }
 }
