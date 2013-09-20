@@ -47,4 +47,13 @@ class NitroClient
 
         return $doc->results->broadcast;
     }
+
+
+    public function fetchEpisode($pid){
+        $url = self::BASE_URL . '/programmes?pid=' . $pid . '&entity_type=episode&api_key=' . self::API_KEY;
+
+        $response = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);
+        $doc = simplexml_load_string($response);
+        return new NitroResponse($doc);
+    }
 }

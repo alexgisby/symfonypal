@@ -5,6 +5,7 @@ namespace BBC\BBCBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BBC\BBCBundle\Models\ServiceModel;
 use BBC\BBCBundle\Models\BroadcastModel;
+use BBC\BBCBundle\Models\EpisodeModel;
 
 class DemoController extends BaseController
 {
@@ -70,10 +71,11 @@ class DemoController extends BaseController
      * @access public
      * @return void
      */
-    public function episodeAction()
+    public function episodeAction($pid)
     {
+        $episode = EpisodeModel::fetchEpisode($pid);
         return $this->render('BBCBundle:Demo:episode.html.twig',
-            $this->getBarlesque()
+            $this->getBarlesque() + array('episode' => $episode)
         );
     }
 }

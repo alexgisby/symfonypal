@@ -64,4 +64,9 @@ class NitroResponse implements Iterator, Countable
     {
         return isset($this->doc->results->service[$this->position]);
     }
+
+    public function getEpisode()
+    {
+        return $this->doc->results->episode;
+    }
 }
