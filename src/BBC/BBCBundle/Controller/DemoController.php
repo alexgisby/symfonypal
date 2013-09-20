@@ -4,6 +4,7 @@ namespace BBC\BBCBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BBC\BBCBundle\Models\ServiceModel;
+use BBC\BBCBundle\Models\BroadcastModel;
 
 class DemoController extends BaseController
 {
@@ -64,10 +65,12 @@ class DemoController extends BaseController
      * @access public
      * @return void
      */
-    public function scheduleAction()
+    public function scheduleAction($service_id)
     {
+        $broadcasts = BroadcastModel::fetchServiceSchedule($service_id, strtotime('2013-09-20 00:00:00'), strtotime('2013-09-20 23:59:59'));
+
         return $this->render('BBCBundle:Demo:schedule.html.twig',
-            $this->getBarlesque()
+            $this->getBarlesque() + array('broadcasts' => $broadcasts)
         );
     }
 

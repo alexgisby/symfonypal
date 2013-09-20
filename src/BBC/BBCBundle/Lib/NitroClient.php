@@ -25,8 +25,26 @@ class NitroClient
 
         $url = self::BASE_URL . '/services' . $query_string . '&api_key=' . self::API_KEY;
 
-        $response = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);        
+        $response = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);
         $doc = simplexml_load_string($response);
         return new NitroResponse($doc);
+    }
+
+    public function fetchServiceBroadcasts($sid, $from, $to, $limit)
+    {
+        $query = array(
+            'sid' => urlencode($sid),
+            'start_from' => date('c', $from),
+            'end_to' => date('c', $to),
+            'page_size' => (int)$limit,
+            'api_key' => self::API_KEY,
+            'mixin' => 'titles'
+        );
+
+        $url = self::BASE_URL . '/broadcasts?' . http_build_query($query);
+        $response = \BBC\BBCBundle\Lib\HttpClient::getUrl($url);
+        $doc = simplexml_load_string($response);
+
+        return $doc->results->broadcast;
     }
 }
