@@ -16,16 +16,22 @@ class DemoController extends BaseController
     public function indexAction()
     {
         $rawservices = ServiceModel::fetchServices();
-        $services = array();
+        $tv_services = $radio_services = array();
         foreach ($rawservices as $s) {
-            $services[] = array(
+            $obj = array(
                 'id'=>(string)$s->sid,
                 'type'=>(string)$s->type,
                 'name'=>(string)$s->name,
             );
+            if ($obj['type'] === 'TV') {
+                $tv_services[] = $obj;
+            } else {
+                $radio_services[] = $obj;
+            }
         }
         $viewData = $this->getBarlesque();
-        $viewData['services'] = $services;
+        $viewData['radio_services'] = $radio_services;
+        $viewData['tv_services'] = $tv_services;
         return $this->render('BBCBundle:Demo:index.html.twig', $viewData);
     }
 
