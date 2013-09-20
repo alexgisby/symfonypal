@@ -9,12 +9,21 @@
 {% block content %}
     <h1 class="title">Welcome BBC Peeps!</h1>
 
+    <h2>Schedules for services</h2>
+    <ul class="services">
+      {% for service in services %}
+        <li>
+            <a href="{{ url('_schedule', {'service':service.id})}}">{{ service.id }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
     <ul class="pages">
         <li>
             <a href="{{ url('_services')}}">BBC and radio services</a>
         </li>
         <li>
-            <a href="{{ url('_schedule')}}">Schedule</a>
+            <a href="{{ url('_schedule', {'service':'bbc_one'})}}">Schedule</a>
         </li>
     </ul>
 
