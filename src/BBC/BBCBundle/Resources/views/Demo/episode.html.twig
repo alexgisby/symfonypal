@@ -13,6 +13,12 @@
     <div>
         <h3>PID: {{episode.pid}}</h3>
         <h3>Synopsis:</h3>
+        {% if episode.longSynopsis %}
         {{episode.longSynopsis}}
+        {% elseif episode.mediumSynopsis %}
+        {{episode.mediumSynopsis}}
+        {% elseif episode.shortSynopsis  %}
+        {{episode.shortSynopsis}}
+        {% endif %}
     </div>
 {% endblock %}
