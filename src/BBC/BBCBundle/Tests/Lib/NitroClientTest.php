@@ -15,7 +15,10 @@ class NitroClientTest extends TestCase
     public function testFetchServices()
     {
         $client = new NitroClient();
-        $response = $client->fetchServices();
-        
+        $response = $client->fetchServices(
+            array('TV', 'Local Radio', 'National Radio', 'Regional Radio'),
+            200
+        );
+        $this->assertInstanceOf('BBC\\BBCBundle\\Lib\\NitroResponse', $response);
     }
 }

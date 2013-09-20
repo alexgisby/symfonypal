@@ -9,13 +9,18 @@ use BBC\BBCBundle\Lib\NitroClient;
  */
 class ServiceModel extends BaseModel
 {
-    
-    
     public static function fetchServices()
     {
         $url = 'http://d.bbc.co.uk/nitro/api/services/?api_key=qsyftbsdnprjqw9sxy4fvz2e';
         $client = new NitroClient();
 
-        $query = $client->fetchServices();
+        $resultset = $client->fetchServices(
+            array('TV', 'Local Radio', 'National Radio', 'Regional Radio'), 
+            200
+        );
+
+        $resultset->setInstanceClass('BBC\\BBCBundle\\Models\\ServiceModel');
+
+        return $resultset;
     }
 }
