@@ -1,11 +1,11 @@
 {% extends 'BBCBundle::layout.html.twig' %}
 
+{% block head %}{{ head | raw }}{% endblock %}
+{% block bodyfirst %}{{ bodyfirst | raw }}{% endblock %}
+{% block bodylast %}{{ bodylast | raw }}{% endblock %}
+
+
 {% block title %}Symfony - Welcome{% endblock %}
-
-{% block content_header '' %}
-
 {% block content %}
-
     <h1 class="title">Welcome BBC Peeps!</h1>
-
 {% endblock %}
