@@ -59,6 +59,15 @@ class DemoController extends BaseController
     {
         $broadcasts = BroadcastModel::fetchServiceSchedule($service_id, strtotime('2013-09-20 00:00:00'), strtotime('2013-09-20 23:59:59'));
 
+        foreach($broadcasts as $cast) {
+            $times = $cast->published_time->attributes();
+            $image = $cast->image->attributes();
+
+            $cast->start_time = strtotime($times['start']);
+            $cast->end_time = strtotime($times['end']);
+            $cast->image_href = str_replace('$recipe', '512x512', $image['template_url']);
+        }
+
         return $this->render('BBCBundle:Demo:schedule.html.twig',
             $this->getBarlesque() + array('broadcasts' => $broadcasts)
         );
