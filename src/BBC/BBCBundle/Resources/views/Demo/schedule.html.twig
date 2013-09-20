@@ -12,10 +12,10 @@
     <div class="schedule">
     {% for broadcast in broadcasts %}
         <div class="row">
-            <div class="img span3">
+            <div class="img span2">
                 <img src="{{ broadcast.image_href }}" alt="IM AN IMAGE">
             </div>
-            <div class="title span6">
+            <div class="title span8">
                 <a href="/episode/{{ broadcast.ancestors_titles.episode.pid }}">
                     {% if broadcast.ancestors_titles.brand.title is defined %}
                         <span class="brand-title">{{ broadcast.ancestors_titles.brand.title }}</span>
@@ -28,7 +28,7 @@
                     {% endif %}
                 </a>
             </div>
-            <div class="time span3">
+            <div class="time span2">
                 <span class="broadcast-time">
                 {{ broadcast.start_time|date('g:ia') }}
                 -
