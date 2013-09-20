@@ -1,10 +1,10 @@
 <?php
 
-namespace BBC\BBCBundle\EventListener;
+namespace Acme\DemoBundle\EventListener;
 
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use BBC\BBCBundle\Twig\Extension\DemoExtension;
+use Acme\DemoBundle\Twig\Extension\DemoExtension;
 
 class ControllerListener
 {
@@ -17,7 +17,6 @@ class ControllerListener
 
     public function onKernelController(FilterControllerEvent $event)
     {
-        die('fdgdf');
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
             $this->extension->setController($event->getController());
         }
