@@ -93,6 +93,7 @@ class DemoController extends BaseController
     public function episodeAction($pid)
     {
         $episode = EpisodeModel::fetchEpisode($pid);
+        $episode['imageHref'] = str_replace('$recipe', '512x512', $episode['imageHref']);
         return $this->render('BBCBundle:Demo:episode.html.twig',
             $this->getBarlesque() + array('episode' => $episode)
         );

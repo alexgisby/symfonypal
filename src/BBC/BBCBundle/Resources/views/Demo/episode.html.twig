@@ -8,5 +8,7 @@
 {% block title %}EPISODE{% endblock %}
 {% block content %}
     <h1 class="title">EPISODE PAGE</h1>
-    {{episode.pid}}
+    <h2>{{episode.pid}}</h2>
+    <h2>{{episode.title}}</h2>
+    <img src="{{episode.imageHref}}" />
 {% endblock %}

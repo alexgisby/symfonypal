@@ -17,12 +17,13 @@ class EpisodeModel extends BaseModel
 
         //http://d.bbc.co.uk/nitro/api/programmes?entity_type=episode&pid=wcrhl7thx1w&api_key=qsyftbsdnprjqw9sxy4fvz2e
 
-        var_dump($episode->image);
-        die();
+        //var_dump((string)$episode->image['template_url']);
+        //die();
 
         return array(
             'pid' => $episode->pid,
-            'image' => $episode->image->template_url,
+            'title' => $episode->presentation_title,
+            'imageHref' => (string)$episode->image['template_url'],
             'shortSynopsis' => $episode->synopses->short,
             'mediumSynopsis' => $episode->synopses->medium,
             'longSynopsis' => $episode->synopses->long
