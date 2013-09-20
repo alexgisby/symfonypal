@@ -7,7 +7,7 @@
 
 {% block title %}SCHEDULE{% endblock %}
 {% block content %}
-    <h1 class="title">SCHEDULE</h1>
+    <h1 class="title">{{ service.name|upper }} SCHEDULE</h1>
 
     <div class="schedule">
     {% for broadcast in broadcasts %}
@@ -38,4 +38,7 @@
         </a>
     {% endfor %}
     </div>
+<div class="back">
+    <a href="{{ url('_welcome')}}">Go back</a>
+</div>
 {% endblock %}
